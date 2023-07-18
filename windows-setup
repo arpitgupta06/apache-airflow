@@ -1,0 +1,2 @@
+# How to setup apache airflow in windows
+Apache Airflow only runs on Unix-based systems. On Windows, you can either run this on WSL (Windows Subsystem for Linux) or Docker.
