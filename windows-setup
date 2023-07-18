@@ -1,2 +1,13 @@
 # How to setup apache airflow in windows
 Apache Airflow only runs on Unix-based systems. On Windows, you can either run this on WSL (Windows Subsystem for Linux) or Docker.
+In this file, I will describe how to setup Airflow using WSL. Note: This is for Windows 10 users. 
+Step 1 --> Run Powershell as an administrator.
+Step 2 --> Run following command to `Enable the Windows Subsystem for Linux`
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+Step 3 --> Following command to `Enable Virtual Machine`
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+Step 4 --> Time to download the Linux Kernel Update package
+					-> Go to Microsoft Store
+					-> Search Linux in the `Search Tab`
+					-> Install any Linux kernel (Ubuntu, Debian etc)
+**After installing kernel; it asks for setting up username and password**
