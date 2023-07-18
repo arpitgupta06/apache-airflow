@@ -1,38 +1,53 @@
-#How to setup apache airflow in windows
+# How to setup apache airflow in windows
+
 Apache Airflow only runs on Unix-based systems. On Windows, you can either run this on WSL (Windows Subsystem for Linux) or Docker.
 In this file, I will describe how to setup Airflow using WSL. Note: This is for Windows 10 users. 
+
 Step 1 --> Run Powershell as an administrator.
+
 Step 2 --> Run following command to `Enable the Windows Subsystem for Linux`
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+
 Step 3 --> Following command to `Enable Virtual Machine`
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+
 Step 4 --> Time to download the Linux Kernel Update package
 					-> Go to Microsoft Store
 					-> Search Linux in the `Search Tab`
 					-> Install any Linux kernel (Ubuntu, Debian etc)
+
 **After installing kernel; it asks for setting up username and password**
 
 After setting up credentials, let's run following commands one by one.
+
 $ sudo apt update && sudo apt upgrade  // Update the linux kernel with new libraries
+
 $ sudo nano /etc/wsl.conf  // Mount windows file system to Linux. After opening `wsl.conf` file; insert below lines and save
 	[automount]
 	root = /
 	options = "metadata"  // Now save the file with CTRL+s and CTRL+x for exit. After this, Sign out from windows account and then Sign in
 
 $ python3 --version  // Check python version; if not installed the use
+
 $ sudo apt install python3-pip  // run this command if python is not installed in your system
+
 $ pip3 install apache-airflow  // install apache airflow through pip
+
 $ export AIRFLOW_HOME=/c/Users/arpit/airflow  // setting up Airflow Home; you can choose any folder for setting up Airflow environment
+
 $ nano ~/.bashrc  // mention same `export AIRFLOW_HOME=/c/Users/arpit/airflow` in `.bashrc` file.
+
 $ airflow version  // check airflow version
+
 $ echo $AIRFLOW_HOME  // check if airflow environment is correctly placed
+
 $ airflow db init  // initialize airflow metadata database
+
 $ airflow webserver  // command for start the Webserver
 		// type `localhost:8080` in your browser.
 		// If it asks for login credential then place the credentials otherwise in our next command I will show how to create a user for airflow webserver
+
 $ airflow users create --username admin --firstname arpit --lastname gupta --role admin --arpit@gmail.com  // run this command for creating new user
 		// now go to airflow webserver which is opned in browser; place `username` and `password` for login
 
 $ airflow scheduler  // start the airflow scheduler; run this command in new terninal because in one terminal Webserver is already running
-
-
