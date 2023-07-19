@@ -50,4 +50,8 @@ $ airflow webserver  // command for start the Webserver
 $ airflow users create --username admin --firstname arpit --lastname gupta --role admin --arpit@gmail.com  // run this command for creating new user
 		// now go to airflow webserver which is opned in browser; place `username` and `password` for login
 
+$ airflow users list  // shows the list of airflow users
+
 $ airflow scheduler  // start the airflow scheduler; run this command in new terninal because in one terminal Webserver is already running
+
+https://towardsdatascience.com/building-pipelines-in-apache-airflow-for-beginners-58f87a1512d5
